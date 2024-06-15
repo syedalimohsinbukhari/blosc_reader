@@ -1,4 +1,3 @@
 # `blosc_reader`
 
-A quick and dirty `blosc` file reader and plotter I made for my PhD project.
-
+A simple and dirty `blosc_reader` file reader and plotter.
