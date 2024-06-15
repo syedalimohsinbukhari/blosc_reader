@@ -1,0 +1,33 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: mpyez
+
+on: [ 'push' ]
+
+jobs:
+    build:
+
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: [ "3.9" ]
+
+        steps:
+            -   uses: actions/checkout@v4
+            -   name: Set up Python ${{ matrix.python-version }}
+                uses: actions/setup-python@v4
+                with:
+                    python-version: ${{ matrix.python-version }}
+            -   name: Install dependencies
+                run: |
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt
+                    pip install build
+            -   name: build package
+                run: python -m build
+            -   name: Analysing the code with pylint
+                run: |
+                    pip install pylint
+                    pylint --rcfile=./.pylintrc --fail-under=7 $(git ls-files '*.py')
