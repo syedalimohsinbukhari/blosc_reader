@@ -15,7 +15,7 @@ setup(
     long_description=readme,
     long_description_content_type="text/markdown",
     python_requires=">3.9",
-    install_requires=["blosc==1.11.1", "matplotlib==3.8.4", "setuptools==70.0.0"],
+    install_requires=["blosc==1.11.1", "matplotlib==3.8.4", "setuptools==78.1.1"],
     include_package_data=True,
     classifiers=[
         "License :: OSI Approved :: MIT License",
